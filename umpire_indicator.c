@@ -104,7 +104,6 @@ void input_callback(InputEvent* input_event, void* ctx) {
             if(state->state == StateCounter) {
                 if(state->balls < 4) state->balls++;
                 if(state->balls == 4) {
-                    // Reset counts as it's a walk
                     state->balls = 0;
                     state->strikes = 0;
                 }
@@ -114,12 +113,10 @@ void input_callback(InputEvent* input_event, void* ctx) {
             if(state->state == StateCounter) {
                 if(state->strikes < 3) state->strikes++;
                 if(state->strikes == 3) {
-                    // Reset strikes and balls, increment outs
                     state->strikes = 0;
                     state->balls = 0;
                     if(state->outs < 2) state->outs++;
                     else {
-                        // Reset all counts as it's a new inning
                         state->outs = 0;
                     }
                 }
@@ -129,7 +126,6 @@ void input_callback(InputEvent* input_event, void* ctx) {
             if(state->state == StateCounter) {
                 if(state->outs < 2) state->outs++;
                 else {
-                    // Reset all counts as it's a new inning
                     state->outs = 0;
                     state->balls = 0;
                     state->strikes = 0;
